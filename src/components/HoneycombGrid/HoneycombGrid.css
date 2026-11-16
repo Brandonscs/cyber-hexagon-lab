@@ -1,0 +1,100 @@
+:root {
+  --grid-size: 90px;
+  --neon-pink: #ff007f;
+  --neon-blue: #00f3ff;
+  --neon-purple: #9d00ff;
+  --neon-green: #00ff66;
+  --neon-yellow: #ffe600;
+}
+
+.honeycomb-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 110vw;
+  height: 110vh;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.hexagon-row {
+  display: flex;
+  margin-top: calc(var(--grid-size) * -0.25);
+}
+
+.hexagon-row:nth-child(even) {
+  margin-left: calc(var(--grid-size) * 0.866 / 2);
+}
+
+.hexagon {
+  position: relative;
+  width: calc(var(--grid-size) * 0.866);
+  height: var(--grid-size);
+  margin: 2px;
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  background: rgba(15, 15, 30, 0.6);
+  backdrop-filter: blur(2px);
+  transition: transform 0.25s ease, background 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  will-change: transform, background;
+}
+
+.hexagon::before {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  right: 2px;
+  bottom: 2px;
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  background: #090a16;
+  z-index: 1;
+  transition: background 0.25s ease;
+}
+
+.hexagon .hex-inner {
+  position: relative;
+  z-index: 2;
+  opacity: 0.25;
+  transition: opacity 0.3s ease, color 0.3s ease, transform 0.3s ease;
+  font-size: 1.1rem;
+  color: #666;
+}
+
+.hexagon:hover {
+  transform: scale(1.18);
+  z-index: 10;
+}
+
+.hexagon:hover::before {
+  background: rgba(25, 25, 55, 0.9);
+}
+
+.hexagon.active-pink { background: var(--neon-pink); box-shadow: 0 0 25px var(--neon-pink); }
+.hexagon.active-pink .hex-inner { opacity: 1; color: var(--neon-pink); text-shadow: 0 0 10px var(--neon-pink); transform: scale(1.2); }
+
+.hexagon.active-blue { background: var(--neon-blue); box-shadow: 0 0 25px var(--neon-blue); }
+.hexagon.active-blue .hex-inner { opacity: 1; color: var(--neon-blue); text-shadow: 0 0 10px var(--neon-blue); transform: scale(1.2); }
+
+.hexagon.active-purple { background: var(--neon-purple); box-shadow: 0 0 25px var(--neon-purple); }
+.hexagon.active-purple .hex-inner { opacity: 1; color: var(--neon-purple); text-shadow: 0 0 10px var(--neon-purple); transform: scale(1.2); }
+
+.hexagon.active-green { background: var(--neon-green); box-shadow: 0 0 25px var(--neon-green); }
+.hexagon.active-green .hex-inner { opacity: 1; color: var(--neon-green); text-shadow: 0 0 10px var(--neon-green); transform: scale(1.2); }
+
+.hexagon.active-yellow { background: var(--neon-yellow); box-shadow: 0 0 25px var(--neon-yellow); }
+.hexagon.active-yellow .hex-inner { opacity: 1; color: var(--neon-yellow); text-shadow: 0 0 10px var(--neon-yellow); transform: scale(1.2); }
+
+@media (max-width: 768px) {
+  :root {
+    --grid-size: 60px;
+  }
+}

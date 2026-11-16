@@ -1,0 +1,15 @@
+{
+  "projects": {
+    "default": "fir-devops-fc65e"
+  },
+  "targets": {
+    "fir-devops-fc65e": {
+      "hosting": {
+        "mi-segunda-app": [
+          "cyber-hexagon-lab"
+        ]
+      }
+    }
+  },
+  "etags": {}
+}
